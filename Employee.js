@@ -4,24 +4,27 @@ const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
 const NUMBER_OF_WOROKING_DAYS = 20;
+const MAX_HRS_IN_MONTH = 160;
 
 function employeeWorkingHours(empCheck) {
-    let empHours;
+
     switch (empCheck) {
         case IS_PARTTIME:
-            return empHours = PART_TIME_HOURS;
+            return PART_TIME_HOURS;
         case IS_FULLTIME:
-            return empHours = FULL_TIME_HOURS;
+            return FULL_TIME_HOURS;
         default:
-            return empHours = 0;
+            return 0;
     }
 }
 
-let empHours = 0;
-for (let i = 1; i <= NUMBER_OF_WOROKING_DAYS; i++) {
-    empCheck = (Math.floor(Math.random() * 10) % 3);
-    console.log(i + "Day Employee wage - " + (employeeWorkingHours(empCheck) * WAGE_PER_HOUR));
-    empHours += employeeWorkingHours(empCheck);
+let totalEmpHrs = 0;
+let totalWorkingDays = 0
+while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUMBER_OF_WOROKING_DAYS) {
+    totalWorkingDays++;
+    let empCheck = (Math.floor(Math.random() * 10) % 3);
+    console.log(totalWorkingDays + " Day Employee wage - " + (employeeWorkingHours(empCheck) * WAGE_PER_HOUR));
+    totalEmpHrs += employeeWorkingHours(empCheck);
 }
-let empTotalWages = WAGE_PER_HOUR * empHours;
-console.log("the employee total wage is " + empTotalWages);
+let empTotalWages = WAGE_PER_HOUR * totalEmpHrs;
+console.log("Total employee hours:" + totalEmpHrs + "\nTotal wage:  " + empTotalWages);
