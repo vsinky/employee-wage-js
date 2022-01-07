@@ -3,18 +3,25 @@ const IS_FULLTIME = 2;
 const PART_TIME_HOURS = 4;
 const FULL_TIME_HOURS = 8;
 const WAGE_PER_HOUR = 20;
+const NUMBER_OF_WOROKING_DAYS = 20;
 
-function employeeHours(empcheck) {
-    switch (empcheck) {
+function employeeWorkingHours(empCheck) {
+    let empHours;
+    switch (empCheck) {
         case IS_PARTTIME:
-            return emphours = PART_TIME_HOURS;
+            return empHours = PART_TIME_HOURS;
         case IS_FULLTIME:
-            return emphours = FULL_TIME_HOURS;
+            return empHours = FULL_TIME_HOURS;
         default:
-            return emphours = 0;
+            return empHours = 0;
     }
 }
 
-empcheck = (Math.floor(Math.random() * 10) % 3);
-let empWage = WAGE_PER_HOUR * employeeHours(empcheck);
-console.log("the employee wage is " + empWage);
+let empHours = 0;
+for (let i = 1; i <= NUMBER_OF_WOROKING_DAYS; i++) {
+    empCheck = (Math.floor(Math.random() * 10) % 3);
+    console.log(i + "Day Employee wage - " + (employeeWorkingHours(empCheck) * WAGE_PER_HOUR));
+    empHours += employeeWorkingHours(empCheck);
+}
+let empTotalWages = WAGE_PER_HOUR * empHours;
+console.log("the employee total wage is " + empTotalWages);
